@@ -20,16 +20,16 @@ $IsAdmin = ([Security.Principal.WindowsPrincipal] `
 ).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
 if (-not $IsAdmin) {
-    Write-Error "âš ï¸  Run this script as Administrator."
+    Write-Error "⚠️  Run this script as Administrator."
     exit 1
 }
 
 # --- Prompt for action if not specified ---
 if (-not $Action) {
     Write-Host ""
-    Write-Host "â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•" -ForegroundColor Cyan
+    Write-Host "═══════════════════════════════════════" -ForegroundColor Cyan
     Write-Host "  Hibernate on Charger Unplug" -ForegroundColor White
-    Write-Host "â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•" -ForegroundColor Cyan
+    Write-Host "═══════════════════════════════════════" -ForegroundColor Cyan
     Write-Host ""
     Write-Host "Choose an action:" -ForegroundColor Yellow
     Write-Host "  [1] Install" -ForegroundColor Green
@@ -61,7 +61,7 @@ if ($Action -eq "Install") {
     powercfg /hibernate on
     powercfg /change hibernate-timeout-ac 0
     powercfg /change hibernate-timeout-dc 0
-    Write-Host "âœ” Hibernate enabled" -ForegroundColor Green
+    Write-Host "✔ Hibernate enabled" -ForegroundColor Green
     Write-Host ""
 
     # --- Create directory ---
@@ -138,19 +138,19 @@ while ($true) {
         -Principal $principal `
         -Settings $settings | Out-Null
 
-    Write-Host "âœ” Installed successfully" -ForegroundColor Green
-    Write-Host "âœ” Starting service..." -ForegroundColor Green
+    Write-Host "✔ Installed successfully" -ForegroundColor Green
+    Write-Host "✔ Starting service..." -ForegroundColor Green
     Start-ScheduledTask -TaskName $TaskName
 
     Write-Host ""
-    Write-Host "â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•" -ForegroundColor Cyan
+    Write-Host "═══════════════════════════════════════" -ForegroundColor Cyan
     Write-Host "Testing:" -ForegroundColor Yellow
     Write-Host "1. Wait a few seconds" -ForegroundColor White
     Write-Host "2. Unplug your charger" -ForegroundColor White
     Write-Host "3. PC hibernates in ~2 seconds" -ForegroundColor White
     Write-Host ""
     Write-Host "Log: C:\PowerWatcher\log.txt" -ForegroundColor White
-    Write-Host "â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•" -ForegroundColor Cyan
+    Write-Host "═══════════════════════════════════════" -ForegroundColor Cyan
 }
 
 # ===============================
@@ -166,7 +166,7 @@ if ($Action -eq "Uninstall") {
         Write-Host "Removing scheduled task..." -ForegroundColor Yellow
         Stop-ScheduledTask -TaskName $TaskName -ErrorAction SilentlyContinue
         Unregister-ScheduledTask -TaskName $TaskName -Confirm:$false
-        Write-Host "âœ” Task removed" -ForegroundColor Green
+        Write-Host "✔ Task removed" -ForegroundColor Green
     } else {
         Write-Host "No task found" -ForegroundColor White
     }
@@ -174,13 +174,13 @@ if ($Action -eq "Uninstall") {
     # --- Delete files ---
     if (Test-Path $WatcherScript) {
         Remove-Item $WatcherScript -Force
-        Write-Host "âœ” Watcher script deleted" -ForegroundColor Green
+        Write-Host "✔ Watcher script deleted" -ForegroundColor Green
     }
 
     $logFile = "$BaseDir\log.txt"
     if (Test-Path $logFile) {
         Remove-Item $logFile -Force
-        Write-Host "âœ” Log deleted" -ForegroundColor Green
+        Write-Host "✔ Log deleted" -ForegroundColor Green
     }
 
     # --- Remove folder if empty ---
@@ -188,12 +188,12 @@ if ($Action -eq "Uninstall") {
         $contents = Get-ChildItem $BaseDir -Force
         if ($contents.Count -eq 0) {
             Remove-Item $BaseDir -Force
-            Write-Host "âœ” Folder removed" -ForegroundColor Green
+            Write-Host "✔ Folder removed" -ForegroundColor Green
         } else {
             Write-Host "Folder not empty, left intact" -ForegroundColor Yellow
         }
     }
 
     Write-Host ""
-    Write-Host "âœ” Uninstalled successfully" -ForegroundColor Cyan
+    Write-Host "✔ Uninstalled successfully" -ForegroundColor Cyan
 }
