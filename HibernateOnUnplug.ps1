@@ -1,4 +1,4 @@
-# ===============================
+﻿# ===============================
 # Hibernate on Charger Unplug
 # Combined Install/Uninstall Script
 # ===============================
@@ -147,7 +147,7 @@ while ($true) {
     Write-Host "Testing:" -ForegroundColor Yellow
     Write-Host "1. Wait a few seconds" -ForegroundColor White
     Write-Host "2. Unplug your charger" -ForegroundColor White
-    Write-Host "3. PC hibernates in ~2 seconds" -ForegroundColor White
+    Write-Host "3. PC hibernates in ~0.5 seconds" -ForegroundColor White
     Write-Host ""
     Write-Host "Log: C:\PowerWatcher\log.txt" -ForegroundColor White
     Write-Host "═══════════════════════════════════════" -ForegroundColor Cyan
