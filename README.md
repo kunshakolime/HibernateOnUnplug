@@ -14,13 +14,13 @@ Automatically hibernate your Windows laptop when you unplug the charger. Perfect
 Run this command in PowerShell **as Administrator**:
 
 ```powershell
-irm https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/HibernateOnUnplug.ps1 | iex
+irm https://raw.githubusercontent.com/kunshakolime/HibernateOnUnplug/main/HibernateOnUnplug.ps1 | iex
 ```
 
 Or download and run manually:
 
 ```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/HibernateOnUnplug.ps1" -OutFile "$env:TEMP\HibernateOnUnplug.ps1"; & "$env:TEMP\HibernateOnUnplug.ps1"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/kunshakolime/HibernateOnUnplug/main/HibernateOnUnplug.ps1" -OutFile "$env:TEMP\HibernateOnUnplug.ps1"; & "$env:TEMP\HibernateOnUnplug.ps1"
 ```
 
 ## 📋 Manual Usage
@@ -74,7 +74,7 @@ This version is optimized for speed:
 Run the script again and choose **Uninstall**, or:
 
 ```powershell
-irm https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/HibernateOnUnplug.ps1 | iex
+irm https://raw.githubusercontent.com/kunshakolime/HibernateOnUnplug/main/HibernateOnUnplug.ps1 | iex
 # Then select option 2
 ```
 
