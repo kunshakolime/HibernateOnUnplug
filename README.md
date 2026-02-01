@@ -11,14 +11,13 @@ Automatically hibernate your Windows laptop when you unplug the charger. Perfect
 
 ## 🚀 Quick Install
 
-Download and run manually:
+Run this command in PowerShell **as Administrator**:
 
 ```powershell
 irm https://raw.githubusercontent.com/kunshakolime/HibernateOnUnplug/main/HibernateOnUnplug.ps1 -OutFile "$env:TEMP\HibernateOnUnplug.ps1"
 powershell.exe -ExecutionPolicy Bypass -File "$env:TEMP\HibernateOnUnplug.ps1"
 ```
 Or:
-run this command in PowerShell **as Administrator**:
 
 ```powershell
 irm https://raw.githubusercontent.com/kunshakolime/HibernateOnUnplug/main/HibernateOnUnplug.ps1 | iex
